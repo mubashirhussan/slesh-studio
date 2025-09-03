@@ -3,7 +3,7 @@ import {defineField, defineType} from 'sanity'
 import {format, parseISO} from 'date-fns'
 export default defineType({
   name: 'post',
-  title: 'Post',
+  title: 'Blog',
   type: 'document',
   fields: [
     defineField({
