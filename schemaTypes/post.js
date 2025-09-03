@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 
+import {format, parseISO} from 'date-fns'
 export default defineType({
   name: 'post',
   title: 'Post',
@@ -49,17 +50,28 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'relatedPosts',
+      title: 'Related Posts',
+      description: 'The posts that are related to this post',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'post'}}],
+    }),
   ],
 
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
       media: 'mainImage',
+      date: 'publishedAt',
     },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+    prepare({title, media, date}) {
+      const subtitle = date ? format(parseISO(date), 'yyyy/MM/dd') : 'unpublished'
+      return {
+        title,
+        media,
+        subtitle,
+      }
     },
   },
 })
