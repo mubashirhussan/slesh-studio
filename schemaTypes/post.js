@@ -80,11 +80,27 @@ export default defineType({
             {name: 'answer', type: 'text', title: 'Answer'},
           ],
           preview: {
-            select: {title: 'question', subtitle: 'answer'}
-          }
-        }
+            select: {title: 'question', subtitle: 'answer'},
+          },
+        },
       ],
       description: 'Frequently Asked Questions related to this post',
+    }),
+    // --- CTA Card ---
+    defineField({
+      name: 'ctaCard',
+      title: 'CTA Card',
+      type: 'object',
+      fields: [
+        {name: 'headline', title: 'Headline', type: 'string'},
+        {name: 'description', title: 'Description', type: 'text'},
+        {name: 'buttonText', title: 'Button Text', type: 'string'},
+        {name: 'buttonUrl', title: 'Button URL', type: 'url'},
+      ],
+      description: 'Call-to-Action card for promoting services',
+      preview: {
+        select: {title: 'headline', subtitle: 'buttonText'},
+      },
     }),
     // --- Other Schema Examples ---
     defineField({
@@ -114,9 +130,9 @@ export default defineType({
       options: {
         list: [
           {title: 'Summary', value: 'summary'},
-          {title: 'Summary with Large Image', value: 'summary_large_image'}
+          {title: 'Summary with Large Image', value: 'summary_large_image'},
         ],
-        layout: 'radio'
+        layout: 'radio',
       },
       description: 'Type of Twitter card for social sharing',
     }),
