@@ -102,6 +102,34 @@ export default defineType({
         select: {title: 'headline', subtitle: 'buttonText'},
       },
     }),
+    // --- Highlight CTA (Hero-style) ---
+    defineField({
+      name: 'highlightCta',
+      title: 'Highlight CTA',
+      type: 'object',
+      fields: [
+        {
+          name: 'headline',
+          title: 'Headline',
+          type: 'string',
+        },
+
+        {
+          name: 'buttonText',
+          title: 'Button Text',
+          type: 'string',
+        },
+        {
+          name: 'buttonUrl',
+          title: 'Button URL',
+          type: 'url',
+        },
+      ],
+      description: 'Hero-style call-to-action block (big headline + button)',
+      preview: {
+        select: {title: 'headline', subtitle: 'buttonText'},
+      },
+    }),
     // --- Other Schema Examples ---
     defineField({
       name: 'seoTags',
